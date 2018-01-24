@@ -57,3 +57,7 @@ MVC는 Model View Controller의 약자이다.
 
 ###### Controller
 모델과 뷰는 직접적으로 연결되어있지 않으며 Controller를 통하여 연결된다.
+
+> *Scaffolding*
+> 개발자가 MVC 모델을 기반으로 어플리케이션을 만들고자 할 때에 템플릿 기반으로 관련된 코드를 생성하는 것을 의미한다.
+> scaffolding을 제공해주는 도구로는 webpack, yo 와 같은 것을 예로 들 수 있는 듯...
