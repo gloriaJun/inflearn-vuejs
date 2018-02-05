@@ -20,3 +20,8 @@ controller에 FormView를 import한 뒤에 호출한다.
 
 
 ###### 검색어를 입력하면 x버튼이 보인다
+`views/FormView.js`에서 `keyup` 이벤트를 이용하여 입력에 대한 바인딩을 처리한다.
+```javascript
+this.inputEl.addEventListener('keyup', e => this.onkeyup(e));
+```
+
