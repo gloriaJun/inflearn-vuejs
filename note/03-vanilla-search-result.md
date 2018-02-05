@@ -13,3 +13,6 @@ submit 이벤트 발생 -> 검색 함수 실행 -> 검색의 결과를 onSearchR
 
 검색 결과에 대한 데이타를 정의한 `models/SearchModel.js`를 MainController에서 정의하여 가져온다.
 
+
+####### 검색 결과가 보인다
+전달받은 데이타를 html 태그로 출력해주는 로직 구현
