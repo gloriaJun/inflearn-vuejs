@@ -6,8 +6,6 @@ const ResultView = Object.create(View);
 
 ResultView.setup = function (el) {
     this.init(el)
-
-
 }
 
 ResultView.render = function (data = []) {
