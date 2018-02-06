@@ -11,8 +11,6 @@ TabView.tabNames = {
 
 TabView.setup = function (el) {
     this.init(el);
-    this.setActiveTab(this.tabNames.recommand);
-
     this.bindEvents();
     return this;
 }
