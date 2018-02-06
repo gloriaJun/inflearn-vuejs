@@ -18,8 +18,11 @@ export default {
 
         TabView.setup(document.querySelector('#tabs'))
             .on('@change', e => this.onChangeTab(e.detail.tabName));
+
         ResultView.setup(document.querySelector('#search-result'));
-        KeywordView.setup(document.querySelector('#search-keyword'));
+
+        KeywordView.setup(document.querySelector('#search-keyword'))
+            .on('@click', e => this.onClickKeyword(e.detail.keyword));
 
         this.selectedTab = '추천 검색어';
         this.renderView();
@@ -43,6 +46,9 @@ export default {
     },
 
     onSearchResult(data) {
+        TabView.hide();
+        KeywordView.hide();
+        ResultView.show();
         ResultView.render(data);
     },
 
@@ -56,6 +62,11 @@ export default {
         })
     },
 
+    onClickKeyword(keyword) {
+        console.log(tag, 'onClickKeyword()', keyword);
+        this.search(keyword);
+    },
+
     onSubmit(input) {
         console.log(tag, 'onSubmit()', input);
         this.search(input);
@@ -65,5 +76,7 @@ export default {
     onResetForm(e) {
         console.log(tag, 'onReset()');
         ResultView.hide();
+        TabView.show();
+        KeywordView.show();
     }
 }
