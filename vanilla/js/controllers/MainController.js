@@ -40,6 +40,7 @@ export default {
 
     search(query) {
         console.log(tag, 'search()', query);
+        FormView.setValue(query);
         SearchModel.list(query).then(data => {
             this.onSearchResult(data);
         })
@@ -48,8 +49,8 @@ export default {
     onSearchResult(data) {
         TabView.hide();
         KeywordView.hide();
-        ResultView.show();
         ResultView.render(data);
+        ResultView.show();
     },
 
     onChangeTab(tabName) {
@@ -70,13 +71,11 @@ export default {
     onSubmit(input) {
         console.log(tag, 'onSubmit()', input);
         this.search(input);
-        ResultView.show();
     },
 
     onResetForm(e) {
         console.log(tag, 'onReset()');
         ResultView.hide();
-        TabView.show();
-        KeywordView.show();
+        this.renderView();
     }
 }
