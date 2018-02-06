@@ -34,7 +34,7 @@ TabView.bindEvents = function () {
 TabView.onClickTab = function (tabName) {
     this.setActiveTab(tabName);
     // 탭 하단의 내용에 대해서는 관심사가 다르므로 컨트롤러에게 알려줘야한다.
-    this.emit('@change', tabName);
+    this.emit('@change', {tabName});
 }
 
 
