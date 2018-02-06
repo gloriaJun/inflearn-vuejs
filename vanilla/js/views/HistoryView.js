@@ -9,7 +9,7 @@ HistoryView.setup = function (el) {
     return this;
 }
 
-HistoryView.bindEvents = function () {
+HistoryView.bindRemoveEvents = function () {
     Array.from(this.el.querySelectorAll('.btn-remove')).forEach(btn => {
         btn.addEventListener('click', e => {
             e.stopPropagation(); // click 이벤트 전파를 막는다.

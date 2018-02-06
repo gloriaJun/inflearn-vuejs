@@ -26,4 +26,15 @@ Array.from(this.el.querySelectorAll('.btn-remove')).forEach(btn => {
 });
 ```
 
-모델에서 데이타 삭제하기
+동적으로 생성되는 버튼에 대해 바인딩 처리를 위해 `MainController`에서 아래와 같이 바인딩 함수를 체이닝한다.   
+그리고 체이닝을 위해 render 함수에서 this를 리턴해주어야함.
+```javascript
+HistoryModel.list().then(data => {
+    // 각 버튼에 대한 이벤트 바인딩을 위하여 체이닝
+    HistoryView.render(data).bindRemoveEvents();
+})
+```
+
+모델에서 데이타 삭제는 HistoryModel에 사전에 정의된 remove 함수를 호출한다.
+
+

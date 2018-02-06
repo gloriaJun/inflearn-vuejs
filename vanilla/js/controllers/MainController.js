@@ -67,7 +67,6 @@ export default {
 
     onChangeTab(tabName) {
         console.log(tag, 'onChangeTab()', tabName);
-        // this.fetchSearchHistory();
         this.selectedTab = tabName;
         this.renderView();
     },
@@ -85,7 +84,8 @@ export default {
 
     fetchSearchHistory() {
         HistoryModel.list().then(data => {
-            HistoryView.render(data);
+            // 각 버튼에 대한 이벤트 바인딩을 위하여 체이닝
+            HistoryView.render(data).bindRemoveEvents();
         })
     },
 
@@ -96,6 +96,8 @@ export default {
 
     onRemoveHistory(keyword) {
         console.log(tag, 'onRemoveHistory()', keyword);
+        HistoryModel.remove(keyword);
+        this.renderView();
     },
 
     onSubmit(input) {
