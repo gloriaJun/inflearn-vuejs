@@ -11,16 +11,15 @@ KeywordView.setup = function (el) {
 
 KeywordView.render = function (data = []) {
     this.el.innerHTML = data.length ? this.getKeywordHtml(data) : '추천 검색어가 없습니다.';
-    this.show();
-
     this.bindEvents();
+    this.show();
+    return this;
 }
 
 KeywordView.bindEvents = function () {
     Array.from(this.el.querySelectorAll('li')).forEach(li => {
         li.addEventListener('click', e => this.onClickKeyword(e));
     });
-
 }
 
 KeywordView.onClickKeyword = function (e) {

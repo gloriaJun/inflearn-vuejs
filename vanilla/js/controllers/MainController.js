@@ -27,20 +27,27 @@ export default {
             .on('@click', e => this.onClickKeyword(e.detail.keyword));
 
         HistoryView.setup(document.querySelector('#search-history'))
-            .on('@click', e => this.onClickHistory(e.detail.keyword));
+            .on('@click', e => this.onClickHistory(e.detail.keyword))
+            .on('@remove', e => this.onRemoveHistory(e.detail.keyword));
 
         this.selectedTab = '추천 검색어';
+        // this.selectedTab = '최근 검색어';
         this.renderView();
     },
 
     renderView() {
         console.log(tag, 'renderView()');
         TabView.setActiveTab(this.selectedTab);
+
         if (this.selectedTab === '추천 검색어') {
             this.fetchSearchKeyword();
+            HistoryView.hide();
         } else {
             this.fetchSearchHistory();
+            KeywordView.hide();
         }
+
+        ResultView.hide();
     },
 
     search(query) {
@@ -56,19 +63,18 @@ export default {
         KeywordView.hide();
         HistoryView.hide();
         ResultView.render(data);
-        ResultView.show();
     },
 
     onChangeTab(tabName) {
         console.log(tag, 'onChangeTab()', tabName);
-        this.fetchSearchHistory();
+        // this.fetchSearchHistory();
+        this.selectedTab = tabName;
+        this.renderView();
     },
 
     fetchSearchKeyword() {
         KeywordModel.list().then(data => {
             KeywordView.render(data);
-            HistoryView.hide();
-            KeywordView.show();
         })
     },
 
@@ -80,14 +86,16 @@ export default {
     fetchSearchHistory() {
         HistoryModel.list().then(data => {
             HistoryView.render(data);
-            HistoryView.show();
-            KeywordView.hide();
         })
     },
 
     onClickHistory(keyword) {
         console.log(tag, 'onClickHistory()', keyword);
         this.search(keyword);
+    },
+
+    onRemoveHistory(keyword) {
+        console.log(tag, 'onRemoveHistory()', keyword);
     },
 
     onSubmit(input) {
@@ -97,7 +105,6 @@ export default {
 
     onResetForm(e) {
         console.log(tag, 'onReset()');
-        ResultView.hide();
         this.renderView();
     }
 }
