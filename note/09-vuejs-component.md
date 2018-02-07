@@ -14,7 +14,7 @@ VueJS에서는 해당 Component에 대한 파일의 확장자를 `Vue`로 정의
 > 해당 툴을 이용하면 각각의 Component 들에 대한 상태를 확인할 수 있다.   
 
 
-#### Form Component 구현
+#### 앞에서 작성한 코드를 기반으로 Component 구현
 !! 현재 강의에 사용된 화면 기준으로 설명된 내용임. 
 - 검색어의 경우, 다른 컴포넌트의 동작에도 영향을 미치므로 상위 컴포넌트에서 관리하는 것이 좋다.   
     - 즉, app.js에서 관리하는 것이 좋음
@@ -36,4 +36,28 @@ onSubmit() {
 },
 ```
 
-#### Result Component 구현
+###### computed
+템플릿에서 변수 처럼 사용할 수 있는 기능
+```html
+<span class="number" v-if="keywordType">{{index + 1}}</span>
+```
+```javascript
+computed: {
+    keywordType() {
+        return this.type === 'keyword'
+    },
+    historyType() {
+        return this.type === 'history'
+    }
+},
+```
+
+###### watch
+어떠한 값을 감시하다가 값이 변경이 되면 동작을 하도록 정의
+```javascript
+watch: {
+    value(newVal, oldVal) {
+        this.inputValue = newVal;
+    }
+},
+```
