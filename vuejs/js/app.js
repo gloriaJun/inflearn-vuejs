@@ -1,3 +1,5 @@
+import FormComponent from './components/FormComponent.js'
+
 import SearchModel from './models/SearchModel.js'
 import KeywordModel from './models/KeywordModel.js'
 import HistoryModel from './models/HistoryModel.js'
@@ -13,22 +15,21 @@ new Vue({
         keywordList: [],
         historyList: []
     },
+    components: {
+        'search-form': FormComponent
+    },
     created() {
         this.selectedTab = this.tabs[0]
         this.fetchKeyword();
         this.fetchHistory();
     },
     methods: {
-        onSubmit() {
+        onSubmit(query) {
+            this.query = query;
             this.search();
         },
         onClickResetBtn() {
             this.resetForm();
-        },
-        onKeyup() {
-            if(!this.query.length) {
-                this.onClickResetBtn();
-            }
         },
         onClickTab(tab) {
             this.selectedTab = tab;
