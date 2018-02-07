@@ -35,3 +35,5 @@ onSubmit() {
     this.$emit('@submit', this.inputValue.trim());
 },
 ```
+
+#### Result Component 구현
