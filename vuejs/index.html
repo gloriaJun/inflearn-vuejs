@@ -13,15 +13,14 @@
 
 
         <div class="container">
-            {{ msg }}
+            <form v-on:submit.prevent="onClickResetBtn">
+                <input type="text" v-model="query" v-on:keyup="onKeyup" placeholder="검색어를 입력하세요" autofocus>
+                <button type="reset" v-on:click="onClickResetBtn" v-show="query.length" class="btn-reset"></button>
+            </form>
         </div>
     </div>
 
     <!--<div class="container">-->
-        <!--<form>-->
-            <!--<input type="text" placeholder="검색어를 입력하세요" autofocus>-->
-            <!--<button type="reset" class="btn-reset"></button>-->
-        <!--</form>-->
 
         <!--<div class="content">-->
             <!--<ul id="tabs" class="tabs">-->
