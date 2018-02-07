@@ -51,20 +51,23 @@
                 </div>
             </div>
             <div v-else>
-
+                <div v-if="historyList.length">
+                    <ul class="list">
+                        <li v-for="item in historyList" v-on:click="onClickKeyword(item.keyword)">
+                            {{item.keyword}}
+                            <span class="date">{{item.date}}</span>
+                            <button class="btn-remove" v-on:click.stop="onClickHistoryRemoveBtn(item.keyword)"></button>
+                        </li>
+                    </ul>
+                </div>
+                <div v-else>
+                    최근 검색어가 없습니다.
+                </div>
             </div>
         </div>
 
     </div>
 </div>
-
-<!--<div class="container">-->
-
-<!--<div id="search-keyword"></div>-->
-<!--<div id="search-history"></div>-->
-<!--</div>-->
-
-<!--</div>-->
 
 <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
 <script type="module" src="./js/app.js"></script>
