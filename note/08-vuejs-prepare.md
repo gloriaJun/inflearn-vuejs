@@ -19,3 +19,29 @@ vuejs 라이브러리 로딩은 vuejs cdn을 이용하여 강의 진행함.
 `methods`에 DOM과 바인딩할 메소드를 정의한다.   
 `v-on:submit.prevent`와 같이 디렉티브를 정의하면 submit 이벤트 발생 후에 화면이 갱신되는 현상을 막을 수 있다.
 
+#### 검색결과 구현
+- 검색 결과가 검색폼 아래 위치한다    
+조건에 대한 처리는 `v-if` 디렉티브를 사용   
+```javascript
+<div v-if="searchResult.length">
+</div>
+<div v-else>
+    {{query}} 검색어로 찾을 수 없습니다.
+</div>
+```
+
+- 검색 결과가 보인다   
+array로 이루어진 리스트는 `v-for` 디렉티브를 이용한다
+```javascript
+<ul>
+    <li v-for="item in searchResult">
+       <img v-bind:src="item.image">{{item.name}}
+    </li>
+</ul>
+```
+
+- x버튼을 클릭하면 검색폼이 초기화 되고, 검색 결과가 사라진다
+reset 버튼 클릭 시에 발생하는 이벤트를 정의한 함수에서    
+`data` 에 선언한 변수의 값에 대해 초기 값으로 재선언해준다.
+
+#### 탭 구현
