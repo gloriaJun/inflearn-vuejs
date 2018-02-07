@@ -62,3 +62,12 @@ created() {
 
 - 각 탭을 클릭하면 탭 아래 내용이 변경된다    
 data에 정의한 `selectedTab`의 값을 변경해준다.
+
+#### 추천 검색어 구현
+- for 문에서 index를 가져오기    
+```javascript
+<li v-for="(item, index) in keywordList">
+    <span class="number">{{index + 1}}</span>
+    {{item.keyword}}
+</li>
+```
