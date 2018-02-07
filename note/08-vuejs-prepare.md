@@ -45,3 +45,20 @@ reset 버튼 클릭 시에 발생하는 이벤트를 정의한 함수에서
 `data` 에 선언한 변수의 값에 대해 초기 값으로 재선언해준다.
 
 #### 탭 구현
+- 기본으로 추천 검색어 탭을 선택한다    
+조건에 따라 클래스를 바인딩 하기 위해서는 `v-bind:class`를 이용한다.
+```javascript
+<li v-for="tab in tabs" v-bind:class="{active: tab === selectedTab}">
+    {{tab}}
+</li>
+```
+
+DOM이 생성되는 시점에 초기 값을 설정하기 위해서는 `created()`를 이용해서 정의한다.
+```javascript
+created() {
+    this.selectedTab = this.tabs[0]
+},
+```
+
+- 각 탭을 클릭하면 탭 아래 내용이 변경된다    
+data에 정의한 `selectedTab`의 값을 변경해준다.

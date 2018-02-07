@@ -5,7 +5,12 @@ new Vue({
     data: {
         query: '',
         isSubmit: false,
+        tabs: ['추천 검색어', '최근 검색어'],
+        selectedTab : '',
         searchResult: []
+    },
+    created() {
+        this.selectedTab = this.tabs[0]
     },
     methods: {
         onSubmit() {
@@ -18,6 +23,9 @@ new Vue({
             if(!this.query.length) {
                 this.onClickResetBtn();
             }
+        },
+        onClickTab(tab) {
+            this.selectedTab = tab;
         },
         search() {
             SearchModel.list(this.query).then(data => {
