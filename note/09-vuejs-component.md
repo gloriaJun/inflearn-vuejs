@@ -61,3 +61,11 @@ watch: {
     }
 },
 ```
+
+
+#### 단일 파일 Component
+`.vue` 파일안에 template이 정의된 html과 javascript가 정의된 내용을 작성하여 관리할 수 있도록 지원해준다.
+
+- vue-cli를 설치한다.
+- `vue list`를 실행하면 vue에서 지원하는 템플릿을 확인할 수 있다.
+
